@@ -22,5 +22,7 @@ const scene = {
   ],
 };
 fs.writeFile('scene.json', JSON.stringify(scene), (err) => {
-  console.error('There was a problem writing to the file ', err);
+  if (err) {
+    console.error('There was a problem writing to the file ', err);
+  } else { console.log('JSON Written!'); }
 });
