@@ -1,0 +1,27 @@
+{
+  "name": "Questify-VR",
+  "version": "1.0.0",
+  "description": "A VR framework built on top of A-Frame that allows the user to write RPG-esque experiences with ease for the web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lad475/Questify-VR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lad475/Questify-VR/issues"
+  },
+  "homepage": "https://github.com/lad475/Questify-VR#readme",
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "aframe": "^0.9.0"
+  }
+}
