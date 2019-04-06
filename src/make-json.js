@@ -11,18 +11,16 @@ const scene = {
       position: {
         x: 0,
         y: 0,
-        z: 0
+        z: 0,
       },
       scale: 1,
       color: '#4444FF',
       physics: {
-        body: 'static'
-      }
-    }
-  ]
-}
-
-const scene = JSON.stringify(scene);
+        body: 'static',
+      },
+    },
+  ],
+};
 fs.writeFile('scene.json', JSON.stringify(scene), (err) => {
-  console.error('There was a problem writing to the file');
+  console.error('There was a problem writing to the file ', err);
 });

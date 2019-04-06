@@ -4,4 +4,3 @@ function main() {
   console.log(aframe);
 }
 main();
-
