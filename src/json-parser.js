@@ -55,4 +55,16 @@ function parseAssets(assetData) {
   return assets;
 }
 
+function parseGeometry(geoData) {
+  const geo = document.createElement(geoData.type);
+  Object.keys(geoData).forEach(field => {
+    if (field === 'physics') {
+      // TODO: clean up to figure out best way to do physics
+    } else if (field !== 'type') {
+      geo.setAttribute(field, geoData[field]);
+    }
+  });
+  return geo;
+}
+
 export default pickFirstScene;
