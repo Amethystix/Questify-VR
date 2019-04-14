@@ -56,11 +56,12 @@ function parseAssets(assetData) {
 }
 
 function parseGeometry(geoData) {
-  const geo = document.createElement(geoData.type);
+  const geo = document.createElement('a-entity');
   Object.keys(geoData).forEach(field => {
     if (field === 'physics') {
       // TODO: clean up to figure out best way to do physics
-    } else if (field !== 'type') {
+      geo.setAttributeNode(document.createAttribute(geoData[field]));
+    } else {
       geo.setAttribute(field, geoData[field]);
     }
   });

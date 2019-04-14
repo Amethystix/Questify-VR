@@ -1,1 +1,27 @@
-{"scenes":[{"sky":{"id":"sky","color":"#6EBAA7"},"isDefault":true,"assets":[],"geometries":[{"type":"Sphere","position":{"x":0,"y":0,"z":0},"scale":1,"color":"#4444FF","physics":{"body":"static"}}]}]}
+{
+    "scenes": [
+        {
+            "sky": {
+                "id": "sky",
+                "color": "#6EBAA7"
+            },
+            "isDefault": true,
+            "assets": [],
+            "geometries": [
+                {
+                    "type": "Sphere",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "scale": 1,
+                    "color": "#4444FF",
+                    "physics": {
+                        "body": "static"
+                    }
+                }
+            ]
+        }
+    ]
+}
