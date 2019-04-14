@@ -29,6 +29,11 @@ function loadScene(sceneData) {
       .forEach(key => sky.setAttribute(key, sceneData.sky[key]));
     scene.appendChild(sky);
   }
+  if (sceneData.entities) {
+    sceneData.entities.forEach(entity => {
+      scene.appendChild(parseEntities(entity));
+    });
+  }
   document.body.appendChild(scene);
 }
 
@@ -55,17 +60,17 @@ function parseAssets(assetData) {
   return assets;
 }
 
-function parseGeometry(geoData) {
-  const geo = document.createElement('a-entity');
-  Object.keys(geoData).forEach(field => {
+function parseEntities(entityData) {
+  const entity = document.createElement('a-entity');
+  Object.keys(entityData).forEach(field => {
     if (field === 'physics') {
       // TODO: clean up to figure out best way to do physics
-      geo.setAttributeNode(document.createAttribute(geoData[field]));
+      entity.setAttributeNode(document.createAttribute(entityData[field]));
     } else {
-      geo.setAttribute(field, geoData[field]);
+      entity.setAttribute(field, entityData[field]);
     }
   });
-  return geo;
+  return entity;
 }
 
 export default pickFirstScene;

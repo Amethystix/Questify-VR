@@ -10,19 +10,16 @@ const scene = {
       },
       isDefault: true,
       assets: [],
-      geometries: [
+      entities: [
         {
-          type: 'Sphere',
           position: {
             x: 0,
             y: 0,
             z: 0,
           },
-          scale: 1,
-          color: '#4444FF',
-          physics: {
-            body: 'static',
-          },
+          geometry: 'primitive: sphere',
+          material: 'color: #4444FF',
+          physics: 'static-body',
         },
       ],
     }
