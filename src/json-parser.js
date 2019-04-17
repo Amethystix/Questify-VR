@@ -34,6 +34,17 @@ function loadScene(sceneData) {
       scene.appendChild(parseEntities(entity));
     });
   }
+  // TODO: Make player component
+  if (!sceneData.player) {
+    const player = document.createElement('a-entity');
+    player.setAttribute('id', 'player');
+    player.setAttributeNode(document.createAttribute('camera'));
+    player.setAttributeNode(document.createAttribute('look-controls'));
+    player.setAttributeNode(document.createAttribute('wasd-controls'));
+    player.setAttribute('dynamic-body', 'mass: 1;');
+    player.setAttribute('position', '0 .5 0');
+    scene.appendChild(player);
+  }
   document.body.appendChild(scene);
 }
 
@@ -41,14 +52,14 @@ function parseAssets(assetData) {
   const assets = document.createElement('a-assets');
   assetData.forEach(asset => {
     let element;
-    if (asset.src.includes('.png') || asset.src.includes('jpg')) {
+    if (!asset.src) {
+      element = document.createElement('a-mixin');
+    } else if (asset.src.includes('.png') || asset.src.includes('jpg')) {
       element = document.createElement('img');
     } else if (asset.src.includes('.mp3')) {
       element = document.createElement('audio');
     } else if (asset.src.includes('.mp4')) {
       element = document.createElement('video');
-    } else if (!asset.src) {
-      element = document.createElement('a-mixin');
     } else {
       element = document.createElement('a-asset-item');
     }
@@ -61,11 +72,17 @@ function parseAssets(assetData) {
 }
 
 function parseEntities(entityData) {
-  const entity = document.createElement('a-entity');
+  let entity;
+  if (!entityData.type) {
+    entity = document.createElement('a-entity');
+  } else {
+    entity = document.createElement(entityData.type);
+  }
   Object.keys(entityData).forEach(field => {
-    if (field === 'physics') {
-      // TODO: clean up to figure out best way to do physics
-      entity.setAttributeNode(document.createAttribute(entityData[field]));
+    if (field === 'attributes') {
+      entityData.attributes.forEach(attribute => {
+        entity.setAttributeNode(document.createAttribute(attribute));
+      });
     } else {
       entity.setAttribute(field, entityData[field]);
     }
