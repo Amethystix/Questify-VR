@@ -76,6 +76,10 @@ export class Inventory {
         box-sizing: border-box;
       }
 
+      .empty {
+        background-color: red;
+      }
+
       .inventory-item:hover {
         background-color: pink;
       }
