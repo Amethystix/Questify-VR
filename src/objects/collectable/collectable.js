@@ -1,7 +1,6 @@
-import Player from '../../player';
 // Component to attach to all collectable entities
 const registerCollectable = () =>  {
-    AFRAME.registerComponent('collectable', {
+  AFRAME.registerComponent('collectable', {
     schema: {
       name: { type: 'string', default: '' },
       description: { type: 'string', default: '' },
