@@ -1,3 +1,4 @@
+import Player from '../../player';
 // Component to attach to all collectable entities
 const registerCollectable = () =>  {
     AFRAME.registerComponent('collectable', {
@@ -12,12 +13,14 @@ const registerCollectable = () =>  {
         setTimeout(() => {
           if (event.detail.body.el.getAttribute('id') === 'rig') {
             this.el.parentNode.removeChild(this.el);
+            window.player.addToInventory(this.data);
           }
         }, 0);
       });
     },
 
     update: () => {
+
     },
 
     remove: function() {

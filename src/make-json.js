@@ -52,9 +52,7 @@ const scene = {
           // 'obj-model': 'mtl: #key-mtl; obj: #key;',
           'dynamic-body': 'mass: 2; shape: box;',
           // scale: '.0025, .0025, .0025',
-          attributes: [
-            'collectable',
-          ],
+          collectable: 'name: boxy; description: a box',
         },
       ],
     },
