@@ -2,15 +2,17 @@
 const registerCollectable = () =>  {
     AFRAME.registerComponent('collectable', {
     schema: {},
-    init: () => {
-      const playerElement = document.getElementById('player');
-      playerElement.addEventListener('collide', () => {
-        console.log('hey');
+    init: function() {
+      this.el.addEventListener('collide', (event, hi) => {
+        console.log(event);
+        console.log(hi);
       });
+
+      document.getElementById('rig').addEventListener('collide', (evt) => console.log(evt));
     },
     update: () => {
     },
-    remove: () => {}
+    remove: () => {},
   });
 };
 

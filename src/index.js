@@ -1,6 +1,7 @@
 
 import pickFirstScene from './json-parser';
 import { registerCollectable } from './objects/collectable';
+import { Inventory } from './UI/inventory';
 
 
 function main() {
@@ -8,5 +9,6 @@ function main() {
   // makeScene(scene);
   registerCollectable();
   pickFirstScene();
+  const inv = new Inventory();
 }
 main();

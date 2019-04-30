@@ -1,23 +1,24 @@
 // Note: this file is primarily for me to not write JSON by hand
 const fs = require('fs');
 
-const scene = { 
+const scene = {
   scenes: [
     {
       sky: {
         id: 'sky',
-        color: '#6EBAA7'
+        color: '#6EBAA7',
+        // CSS classes on inventory
       },
       isDefault: true,
       assets: [
-        {
-          src: './assets/key.obj',
-          id: 'key'
-        },
-        {
-          src: './assets/key.mtl',
-          id: 'key-mtl'
-        }
+        // {
+        //   src: './assets/key.obj',
+        //   id: 'key'
+        // },
+        // {
+        //   src: './assets/key.mtl',
+        //   id: 'key-mtl'
+        // }
       ],
       entities: [
         // {
@@ -37,27 +38,28 @@ const scene = {
           height: 100,
           material: 'color: #AA1188',
           rotation: '-90 0 0',
-          'static-body': 'shape: box',
+          'static-body': '',
         },
         {
+          type: 'a-box',
           position: {
             x: 0,
-            y: .4,
-            z: -.2,
+            y: 0.4,
+            z: -2,
           },
           height: 1,
           width: 1,
-          'obj-model': 'mtl: #key-mtl; obj: #key;',
-          'dynamic-body': 'mass: -1; shape: box;',
-          scale: '.0025, .0025, .0025',
+          // 'obj-model': 'mtl: #key-mtl; obj: #key;',
+          'dynamic-body': 'mass: 2; shape: box;',
+          // scale: '.0025, .0025, .0025',
           attributes: [
-            'collectable'
-          ]
-        }
+            'collectable',
+          ],
+        },
       ],
-    }
+    },
   ],
-}
+};
 fs.writeFile('./src/scene.json', JSON.stringify(scene), (err) => {
   if (err) {
     console.error('There was a problem writing to the file ', err);

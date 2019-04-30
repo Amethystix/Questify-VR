@@ -1,56 +1,8 @@
 const data = require('./scene.json');
 
-function pickFirstScene(json, sceneName) {
-  let sceneIsLoaded = false;
-  data.scenes.forEach(scene => {
-    if (!sceneName) {
-      if (scene.isDefault) {
-        loadScene(scene);
-        sceneIsLoaded = true;
-      } 
-    } else if (sceneName === scene.name) {
-      loadScene(scene);
-      sceneIsLoaded = true;
-    }
-  });
-  if (!sceneIsLoaded) {
-    console.error(sceneName ? `The scene ${sceneName} does not exist` : 'There is no default scene provided');
-  }
-}
-
-function loadScene(sceneData) {
-  const scene = document.createElement('a-scene');
-  if (sceneData.assets) {
-    scene.appendChild(parseAssets(sceneData.assets));
-  }
-  if (sceneData.sky) {
-    const sky = document.createElement('a-sky');
-    Object.keys(sceneData.sky)
-      .forEach(key => sky.setAttribute(key, sceneData.sky[key]));
-    scene.appendChild(sky);
-  }
-  if (sceneData.entities) {
-    sceneData.entities.forEach(entity => {
-      scene.appendChild(parseEntities(entity));
-    });
-  }
-  // TODO: Make player component
-  if (!sceneData.player) {
-    const player = document.createElement('a-entity');
-    player.setAttribute('id', 'player');
-    player.setAttributeNode(document.createAttribute('camera'));
-    player.setAttributeNode(document.createAttribute('look-controls'));
-    player.setAttributeNode(document.createAttribute('wasd-controls'));
-    player.setAttribute('dynamic-body', 'mass: 1;');
-    player.setAttribute('position', '0 .5 0');
-    scene.appendChild(player);
-  }
-  document.body.appendChild(scene);
-}
-
 function parseAssets(assetData) {
   const assets = document.createElement('a-assets');
-  assetData.forEach(asset => {
+  assetData.forEach((asset) => {
     let element;
     if (!asset.src) {
       element = document.createElement('a-mixin');
@@ -63,7 +15,7 @@ function parseAssets(assetData) {
     } else {
       element = document.createElement('a-asset-item');
     }
-    Object.keys(asset).forEach(key => {
+    Object.keys(asset).forEach((key) => {
       element.setAttribute(key, asset[key]);
     });
     assets.appendChild(element);
@@ -78,9 +30,9 @@ function parseEntities(entityData) {
   } else {
     entity = document.createElement(entityData.type);
   }
-  Object.keys(entityData).forEach(field => {
+  Object.keys(entityData).forEach((field) => {
     if (field === 'attributes') {
-      entityData.attributes.forEach(attribute => {
+      entityData.attributes.forEach((attribute) => {
         entity.setAttributeNode(document.createAttribute(attribute));
       });
     } else {
@@ -88,6 +40,59 @@ function parseEntities(entityData) {
     }
   });
   return entity;
+}
+
+
+function loadScene(sceneData) {
+  const scene = document.createElement('a-scene');
+  if (sceneData.assets) {
+    scene.appendChild(parseAssets(sceneData.assets));
+  }
+  if (sceneData.sky) {
+    const sky = document.createElement('a-sky');
+    Object.keys(sceneData.sky)
+      .forEach(key => sky.setAttribute(key, sceneData.sky[key]));
+    scene.appendChild(sky);
+  }
+  if (sceneData.entities) {
+    sceneData.entities.forEach((entity) => {
+      scene.appendChild(parseEntities(entity));
+    });
+  }
+  // TODO: Make player component
+  if (!sceneData.player) {
+    const player = document.createElement('a-entity');
+    const playerWrapper = document.createElement('a-entity');
+    playerWrapper.appendChild(player);
+    playerWrapper.setAttribute('id', 'rig');
+    playerWrapper.setAttributeNode(document.createAttribute('kinematic-body'));
+    playerWrapper.setAttributeNode(document.createAttribute('movement-controls'));
+
+    player.setAttribute('id', 'player');
+    player.setAttributeNode(document.createAttribute('camera'));
+    player.setAttribute('position', '0 .6 0');
+    player.setAttribute('look-controls', 'pointerLockEnabled: true');
+    scene.appendChild(playerWrapper);
+  }
+  document.body.appendChild(scene);
+}
+
+function pickFirstScene(json, sceneName) {
+  let sceneIsLoaded = false;
+  data.scenes.forEach((scene) => {
+    if (!sceneName) {
+      if (scene.isDefault) {
+        loadScene(scene);
+        sceneIsLoaded = true;
+      }
+    } else if (sceneName === scene.name) {
+      loadScene(scene);
+      sceneIsLoaded = true;
+    }
+  });
+  if (!sceneIsLoaded) {
+    console.error(sceneName ? `The scene ${sceneName} does not exist` : 'There is no default scene provided');
+  }
 }
 
 export default pickFirstScene;
