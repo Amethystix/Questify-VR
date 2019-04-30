@@ -1,6 +1,6 @@
 
 import pickFirstScene from './json-parser';
-import { registerCollectable } from './objects/collectable';
+import registerAll from './objects';
 import Player from './player';
 
 
@@ -8,7 +8,7 @@ function main() {
   // const scene = parseJson('scene.json');
   // makeScene(scene);
   window.player = new Player();
-  registerCollectable();
+  registerAll();
   pickFirstScene();
 }
 main();

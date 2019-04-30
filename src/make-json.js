@@ -41,6 +41,19 @@ const scene = {
           'static-body': '',
         },
         {
+          type: 'a-sphere',
+          position: {
+            x: 4,
+            y: 0,
+            z: -2,
+          },
+          height: 0.5,
+          width: 0.5,
+          'dynamic-body': 'mass: 2, shape: box',
+          currency: 'value: 5',
+          material: 'color: yellow',
+        },
+        {
           type: 'a-box',
           position: {
             x: 0,
