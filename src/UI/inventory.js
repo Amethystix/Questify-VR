@@ -1,3 +1,4 @@
+import { throws } from "assert";
 
 export class InventoryItem {
   constructor(id) {
@@ -15,10 +16,9 @@ export class InventoryItem {
     this.thumbnail = thumbnail;
     this.addThumbnailCSS();
     this.domElement.classList.replace('empty', 'full');
-    this.makeDescriptionDiv();
 
-    this.domElement.addEventListener('mouseover', this.toggleDescriptionDiv);
-    this.domElement.addEventListener('mouseout', this.toggleDescriptionDiv);
+    this.domElement.addEventListener('mouseover', (evt) => this.toggleDescriptionDiv(evt));
+    this.domElement.addEventListener('mouseout', (evt) => this.toggleDescriptionDiv(evt));
   }
 
   addThumbnailCSS() {
@@ -29,32 +29,20 @@ export class InventoryItem {
   }
 
   toggleDescriptionDiv(evt) {
+    const descEle = document.querySelector('.item-description');
     if (evt.type === 'mouseover') {
-      this.querySelector('.item-description').classList.replace('hidden', 'show');
+      descEle.querySelector('.item-title').textContent = this.name;
+      descEle.querySelector('.item-info').textContent = this.description;
+      descEle.classList.replace('hidden', 'show');
     } else {
-      this.querySelector('.item-description').classList.replace('show', 'hidden');
+      descEle.classList.replace('show', 'hidden');
     }
-  }
-
-  makeDescriptionDiv() {
-    this.descriptionDiv = document.createElement('div');
-    if (this.name) {
-      const nameDiv = document.createElement('div');
-      nameDiv.textContent = this.name;
-      this.descriptionDiv.appendChild(nameDiv);
-    }
-    if (this.description) {
-      const descDiv = document.createElement('div');
-      descDiv.textContent = this.description;
-      this.descriptionDiv.appendChild(descDiv);
-    }
-    this.descriptionDiv.classList.add('item-description', 'hidden');
-    this.descriptionDiv.setAttribute('id', `description-${this.id}`);
-    this.domElement.appendChild(this.descriptionDiv);
   }
 
   removeItem() {
     console.log('remove');
+    this.domElement.classList.replace('full', 'empty');
+    this.domElement.style.backgroundImage('none');
   }
 }
 
@@ -75,8 +63,21 @@ export class Inventory {
       this.invWrapper.appendChild(item.domElement);
     });
     this.addCSS();
+    this.makeDescriptionDiv();
     this.invContainer.appendChild(this.invWrapper);
     document.body.appendChild(this.invContainer);
+  }
+
+  makeDescriptionDiv() {
+    this.descriptionDiv = document.createElement('div');
+    this.descriptionDiv.classList.add('item-description', 'hidden');
+    const name = document.createElement('div');
+    name.classList.add('item-title');
+    const info = document.createElement('div');
+    info.classList.add('item-info');
+    this.descriptionDiv.appendChild(name);
+    this.descriptionDiv.appendChild(info);
+    this.invContainer.appendChild(this.descriptionDiv);
   }
 
   toggleHidden() {
@@ -113,18 +114,29 @@ export class Inventory {
         width: 75%;
         padding: 20px;
         background-color: #BBBBBB;
-        border-radius: 5px;
+        border-radius: 10px;
         margin: auto;
         text-align: center;
+        border: 1px solid black;
       }
 
       .item-description {
-        position: absolute;
-        padding: 10px;
-        opacity: .7;
-        background-color: green;
-        color: black;
-        top: -100px;
+        margin: 85px;
+        padding: 15px;
+        background-color: #BBB;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+
+      .item-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .item-info {
+        font-size: 16px;
       }
 
       .inventory-item {
