@@ -1,4 +1,3 @@
-import { throws } from "assert";
 
 export class InventoryItem {
   constructor(id) {
@@ -39,6 +38,7 @@ export class InventoryItem {
     }
   }
 
+  // TODO: Flesh out, destroy event listeners, remove description and title fields, etc
   removeItem() {
     console.log('remove');
     this.domElement.classList.replace('full', 'empty');
@@ -99,6 +99,7 @@ export class Inventory {
     this.invItems[index].removeItem();
   }
 
+  // TODO: Port this over to a css file - going to keep it here for now for easy script injection
   addCSS() {
     document.write(`<style>
       .container {
