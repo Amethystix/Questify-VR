@@ -70,7 +70,7 @@ function loadScene(sceneData) {
 
     player.setAttribute('id', 'player');
     player.setAttributeNode(document.createAttribute('camera'));
-    player.setAttribute('position', '0 .6 0');
+    player.setAttribute('position', '0 1.6 0');
     player.setAttribute('look-controls', 'pointerLockEnabled: true');
     scene.appendChild(playerWrapper);
   }
