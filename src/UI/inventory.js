@@ -121,7 +121,8 @@ export class Inventory {
       }
 
       .item-description {
-        margin: 85px;
+        width: 75%;
+        margin: 0 auto 50px;
         padding: 15px;
         background-color: #BBB;
         border-radius: 10px;
