@@ -13,9 +13,7 @@ export class InventoryItem {
     this.name = name;
     this.description = description;
     this.thumbnail = thumbnail;
-    if (this.thumbnail) {
-      this.addThumbnailCSS();
-    }
+    this.addThumbnailCSS();
     this.domElement.classList.replace('empty', 'full');
     this.makeDescriptionDiv();
 
@@ -24,15 +22,10 @@ export class InventoryItem {
   }
 
   addThumbnailCSS() {
-    // let thumbnailClass = this.thumbnail;
-    // if (this.thumbnail.includes('/')) {
-    //   thumbnailClass = thumbnailClass.split('/');
-    //   thumbnailClass = thumbnailClass[thumbnailClass.length - 1];
-    // }
-    // thumbnailClass = thumbnailClass.split('.')[0];
-    // document.write('')
-
-    this.domElement.style.backgroundImage = `url(${this.thumbnail})`;
+    // If no thumbnail is specified, use the default thumbnail
+    if (this.thumbnail) {
+      this.domElement.style.backgroundImage = `url(${this.thumbnail})`;
+    }
   }
 
   toggleDescriptionDiv(evt) {
@@ -134,14 +127,6 @@ export class Inventory {
         top: -100px;
       }
 
-      .hidden {
-        display: none;
-      }
-
-      .show {
-        display: block;
-      }
-
       .inventory-item {
         background-size: contain;
         background-repeat: no-repeat;
@@ -154,8 +139,12 @@ export class Inventory {
         box-sizing: border-box;
       }
 
+      .full {
+        background-image: url(https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/question.png?alt=media&token=b9de7f1a-2692-4f5c-8283-0ca37e44292b);
+      }
+
       .inventory-item:hover {
-        background-color: #444444;
+        background-color: #666666;
       }
     </style>`);
   }

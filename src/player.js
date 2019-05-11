@@ -1,9 +1,10 @@
-import { Inventory } from './UI';
+import { Inventory, HUD } from './UI';
 
 export default class Player {
   constructor() {
-    this.inventory = new Inventory();
     this.money = 0;
+    this.hud = new HUD();
+    this.inventory = new Inventory();
 
     setTimeout(() => this.el = document.getElementById('player'), 0);
 
@@ -18,13 +19,19 @@ export default class Player {
     this.inventory.addItem(item);
   }
 
+  changeMoneyUI() {
+    this.hud.amtCurrency.textContent = this.money;
+  }
+
   addMoney(amt) {
     this.money = amt + this.money;
+    this.changeMoneyUI();
   }
 
   withdrawMoney(amt) {
     if (amt <= this.money) {
       this.money = this.money - amt;
+      this.changeMoneyUI();
       return true;
     }
     return false;
