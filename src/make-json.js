@@ -11,14 +11,14 @@ const scene = {
       },
       isDefault: true,
       assets: [
-        // {
-        //   src: './assets/key.obj',
-        //   id: 'key'
-        // },
-        // {
-        //   src: './assets/key.mtl',
-        //   id: 'key-mtl'
-        // }
+        {
+          src: './assets/key.obj',
+          id: 'key'
+        },
+        {
+          src: './assets/key.mtl',
+          id: 'key-mtl'
+        }
       ],
       entities: [
         // {
@@ -39,6 +39,13 @@ const scene = {
           material: 'color: #AA1188',
           rotation: '-90 0 0',
           'static-body': '',
+        },
+        {
+          type: 'a-key',
+          position: '2 1 -2',
+          'obj-model': 'mtl: #key-mtl; obj: #key;',
+          scale: '.025, .025, .025',
+          'dynamic-body': 'mass: 1, shape: box',
         },
         {
           type: 'a-sphere',
