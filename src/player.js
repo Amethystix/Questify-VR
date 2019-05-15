@@ -3,6 +3,7 @@ import { Inventory, HUD } from './UI';
 export default class Player {
   constructor() {
     this.money = 0;
+    this.health = 100;
     this.hud = new HUD();
     this.inventory = new Inventory();
     this.selectedObj = null;
@@ -23,6 +24,10 @@ export default class Player {
 
   changeMoneyUI() {
     this.hud.amtCurrency.textContent = this.money;
+  }
+
+  changeHealthUI() {
+    this.hud.amtHealth.textContent = this.health;
   }
 
   addMoney(amt) {

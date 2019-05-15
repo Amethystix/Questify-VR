@@ -12,6 +12,14 @@ const scene = {
       isDefault: true,
       assets: [
         {
+          src: './assets/applePie.obj',
+          id: 'pie'
+        },
+        {
+          src: './assets/applePie.mtl',
+          id: 'pie-mtl'
+        },
+        {
           src: './assets/key.obj',
           id: 'key'
         },
@@ -26,6 +34,14 @@ const scene = {
         {
           src: './assets/chest.mtl',
           id: 'chest-mtl'
+        },
+        {
+          src: './assets/coin.obj',
+          id: 'coin'
+        },
+        {
+          src: './assets/coin.mtl',
+          id: 'coin-mtl'
         }
       ],
       entities: [
@@ -56,22 +72,38 @@ const scene = {
           'dynamic-body': 'mass: 1, shape: box',
         },
         {
+          type: 'a-coin',
+          position: '3, 1.6, -2',
+          scale: '30, 30, 30'
+        },
+        {
+          type: 'a-coin',
+          position: '5, 1.6, -2',
+          scale: '30, 30, 30'
+        },
+        {
+          type: 'a-coin',
+          position: '7, 1.6, -2',
+          scale: '30, 30, 30'
+        },
+        {
+          type: 'a-coin',
+          position: '9, 1.6, -2',
+          scale: '30, 30, 30'
+        },
+        {
           type: 'a-chest',
           position: '5 .5 -3',
           'static-body': 'shape: box'
         },
         {
-          type: 'a-sphere',
-          position: {
-            x: 4,
-            y: 1,
-            z: -2,
-          },
-          height: 0.1,
-          width: 0.1,
-          'dynamic-body': 'mass: 0, shape: box',
-          currency: 'value: 5',
-          material: 'color: yellow',
+          type: 'a-entity',
+          position: '-2 1 3',
+          'dynamic-body': 'shape: box; mass: 0',
+          spin: '',
+          'obj-model': 'mtl: #pie-mtl; obj: #pie',
+          scale: '.25, .25, .25',
+          collectable: 'name: Apple Pie Slice; description: A delicious piece of freshly baked pie; thumbnail: https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788'
         },
         {
           type: 'a-box',
