@@ -8,22 +8,35 @@ export class InventoryItem {
     this.hasItem = false;
   }
 
-  addItem({ name, description, thumbnail }) {
+  addItem({ name, description, thumbnail }, componentData) {
     this.hasItem = true;
     this.name = name;
     this.description = description;
     this.thumbnail = thumbnail;
+    this.componentData = componentData;
     this.addThumbnailCSS();
     this.domElement.classList.replace('empty', 'full');
 
     this.domElement.addEventListener('mouseover', (evt) => this.toggleDescriptionDiv(evt));
     this.domElement.addEventListener('mouseout', (evt) => this.toggleDescriptionDiv(evt));
+    this.domElement.addEventListener('click', (evt) => this.useItem(evt));
   }
 
   addThumbnailCSS() {
     // If no thumbnail is specified, use the default thumbnail
     if (this.thumbnail) {
       this.domElement.style.backgroundImage = `url(${this.thumbnail})`;
+    }
+  }
+
+  useItem(evt) {
+    const { selectedObj } = window.player;
+    if (selectedObj) {
+      if (selectedObj.components.canBeUnlocked && this.componentData.unlocks) {
+        if (selectedObj.id === this.componentData.unlocksEntity) {
+          window.player.unlock();
+        }
+      }
     }
   }
 

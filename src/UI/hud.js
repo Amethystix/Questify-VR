@@ -8,7 +8,7 @@ export default class HUD {
 
   makeDOMElements() {
     this.container = document.createElement('div');
-    this.container.classList.add('hud-container');
+    this.container.classList.add('hud-container', 'hidden');
 
     this.currencyUI = document.createElement('div');
     this.currencyUI.classList.add('currency-container');
@@ -20,6 +20,15 @@ export default class HUD {
 
     document.body.appendChild(this.container);
     this.makeCSS();
+  }
+
+  toggleHUD() {
+    if (!this.show) {
+      this.container.classList.remove('hidden');
+    } else {
+      this.container.classList.add('hidden');
+    }
+    this.show = !this.show;
   }
 
   makeCSS() {
@@ -43,7 +52,7 @@ export default class HUD {
         position: relative;
         text-align: right;
         padding-right: 25px;
-        padding-top: 25px;
+        margin-top: 25px;
         font-size: 24px;
       }
 

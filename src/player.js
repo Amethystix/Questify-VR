@@ -5,12 +5,14 @@ export default class Player {
     this.money = 0;
     this.hud = new HUD();
     this.inventory = new Inventory();
+    this.selectedObj = null;
 
     setTimeout(() => this.el = document.getElementById('player'), 0);
 
     document.addEventListener('keypress', (evt) => {
       if (evt.key === 'i') {
         this.inventory.toggleHidden();
+        this.hud.toggleHUD();
       }
     });
   }
@@ -35,5 +37,10 @@ export default class Player {
       return true;
     }
     return false;
+  }
+
+  // Unlocks the selected object
+  unlock() {
+    this.selectedObj.components.canBeUnlocked.locked = false;
   }
 }

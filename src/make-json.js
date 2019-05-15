@@ -18,6 +18,14 @@ const scene = {
         {
           src: './assets/key.mtl',
           id: 'key-mtl'
+        },
+        {
+          src: './assets/chest.obj',
+          id: 'chest'
+        },
+        {
+          src: './assets/chest.mtl',
+          id: 'chest-mtl'
         }
       ],
       entities: [
@@ -46,6 +54,11 @@ const scene = {
           'obj-model': 'mtl: #key-mtl; obj: #key;',
           scale: '.025, .025, .025',
           'dynamic-body': 'mass: 1, shape: box',
+        },
+        {
+          type: 'a-chest',
+          position: '5 .5 -3',
+          'static-body': 'shape: box'
         },
         {
           type: 'a-sphere',
