@@ -9,7 +9,9 @@ So far, this project is coming alone quite nicely!  It still has a long ways to 
 
 * The `collectable` series of components can be picked up by the user, sometimes put into an inventory, and otherwise can have other effects.  They are defined by the fact that they have dynamic bodies, and on collision with the user disappear.
 Example:
-```<a-entity collectable="name: name in the inventory; description: description in the inventory; thumbnail: [url to thumbnail] dynamic-body/>"```
+```
+<a-entity collectable="name: name in the inventory; description: description in the inventory; thumbnail: [url to thumbnail] dynamic-body/>
+```
 * All collectable components so far:
   * Currency
   * Unlocks
