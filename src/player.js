@@ -12,10 +12,14 @@ export default class Player {
 
     document.addEventListener('keypress', (evt) => {
       if (evt.key === 'i') {
-        this.inventory.toggleHidden();
-        this.hud.toggleHUD();
+        this.toggleUI();
       }
     });
+  }
+
+  toggleUI() {
+    this.inventory.toggleHidden();
+    this.hud.toggleHUD();
   }
 
   addToInventory(item) {

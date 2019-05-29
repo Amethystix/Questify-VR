@@ -45,6 +45,7 @@ function parseEntities(entityData) {
 
 function loadScene(sceneData) {
   const scene = document.createElement('a-scene');
+  scene.setAttribute('cursor', 'rayOrigin: mouse');
   if (sceneData.assets) {
     scene.appendChild(parseAssets(sceneData.assets));
   }
@@ -71,7 +72,7 @@ function loadScene(sceneData) {
     player.setAttribute('id', 'player');
     player.setAttributeNode(document.createAttribute('camera'));
     player.setAttribute('position', '0 1.6 0');
-    player.setAttribute('look-controls', 'pointerLockEnabled: true');
+    player.setAttribute('look-controls', 'pointerLockEnabled: false');
     scene.appendChild(playerWrapper);
   }
   document.body.appendChild(scene);
