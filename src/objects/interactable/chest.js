@@ -8,14 +8,14 @@ const registerChest = () => {
     init: function() {
       this.chest = new ChestUI(this.el);
       this.el.addEventListener('click', (evt) => {
-        console.log(this.chest);
+        this.chest.onClick(evt);
       });
     }
   });
   
   AFRAME.registerPrimitive('a-chest', {
     defaultComponents: {
-      canBeUnlocked: {},
+      canbeunlocked: {},
       chest: {},
       'obj-model': {
         mtl: '#chest-mtl',
@@ -23,7 +23,7 @@ const registerChest = () => {
       }
     },
     mappings: {
-      
+      islocked: 'canbeunlocked.locked'
     }
   });
 };

@@ -75,6 +75,7 @@ function loadScene(sceneData) {
     player.setAttribute('look-controls', 'pointerLockEnabled: false');
     scene.appendChild(playerWrapper);
   }
+  console.log(scene);
   document.body.appendChild(scene);
 }
 

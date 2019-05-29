@@ -1,7 +1,7 @@
 const registerCanBeUnlocked = () => {
-  AFRAME.registerComponent('canBeUnlocked', {
+  AFRAME.registerComponent('canbeunlocked', {
     schema: {
-      locked: { type: 'boolean', default: 'true' },
+      locked: { type: 'boolean', default: true },
     },
     init: function () {
 

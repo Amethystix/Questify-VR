@@ -19,7 +19,7 @@ export class InventoryItem {
 
     this.domElement.addEventListener('mouseover', (evt) => this.toggleDescriptionDiv(evt));
     this.domElement.addEventListener('mouseout', (evt) => this.toggleDescriptionDiv(evt));
-    this.domElement.addEventListener('click', (evt) => this.useItem(evt));
+    this.domElement.addEventListener('click', (evt) => player.selectedObj = this);
   }
 
   addThumbnailCSS() {
