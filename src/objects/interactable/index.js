@@ -2,8 +2,8 @@ import registerChest from './chest';
 import registerCanBeUnlocked from './can-be-unlocked';
 
 const registerInteractables = () => {
-  registerChest();
   registerCanBeUnlocked();
+  registerChest();
 }
 
 export default registerInteractables;
