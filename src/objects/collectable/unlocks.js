@@ -1,9 +1,10 @@
 const registerUnlocks = () => {
   AFRAME.registerComponent('unlocks', {
     schema: {
-      unlocksEntity: { type: 'string', default: '' },
+      unlocksentity: { type: 'string', default: '' },
     }
-  });  
+  });
+  
 };
 
 export default registerUnlocks;

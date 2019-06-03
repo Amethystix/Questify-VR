@@ -35,7 +35,7 @@ function parseEntities(entityData) {
       entityData.attributes.forEach((attribute) => {
         entity.setAttributeNode(document.createAttribute(attribute));
       });
-    } else {
+    } else if (field !== 'type') {
       entity.setAttribute(field, entityData[field]);
     }
   });

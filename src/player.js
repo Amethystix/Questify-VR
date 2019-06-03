@@ -20,10 +20,14 @@ export default class Player {
   toggleUI() {
     this.inventory.toggleHidden();
     this.hud.toggleHUD();
+    if (this.selectedObj) {
+      this.selectedObj.toggleUI();
+      this.selectedObj = null;
+    }
   }
 
-  addToInventory(item) {
-    this.inventory.addItem(item);
+  addToInventory(item, components) {
+    this.inventory.addItem(item, components);
   }
 
   changeMoneyUI() {
@@ -50,6 +54,8 @@ export default class Player {
 
   // Unlocks the selected object
   unlock() {
-    this.selectedObj.componentsbcanbeunlocked.locked = false;
+    if (this.selectedObj) {
+      this.selectedObj.unlock();
+    }
   }
 }

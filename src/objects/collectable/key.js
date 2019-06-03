@@ -8,7 +8,7 @@ const registerKey = () => {
     
     mappings: {
       thumbnail: 'collectable.thumbnail',
-      unlocks: 'unlocks.unlocksEntity',
+      unlocksentity: 'unlocks.unlocksentity',
       name: 'collectable.name',
       description: 'collectable.description'
     },

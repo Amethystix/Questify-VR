@@ -4,17 +4,18 @@ export default class ChestUI {
   constructor(ele) {
     this.ele = ele;
     this.locked = this.ele.components.canbeunlocked && this.ele.components.canbeunlocked.data.locked;
-    this.contents = [];
+    this.contents = this.ele.data.items;
     this.createDOMView();
   }
 
   onClick() {
-    this.toggleChestUI();
+    this.toggleUI();
     window.player.toggleUI();
+    window.player.selectedObj = this;
   }
 
-  toggleChestUI() {
-    if (document.querySelector('chest-wrapper')) {
+  toggleUI() {
+    if (document.querySelector('.chest-wrapper')) {
       window.player.hud.container.removeChild(this.uiEle);
     } else {
       window.player.hud.container.appendChild(this.uiEle);
@@ -24,7 +25,7 @@ export default class ChestUI {
   unlock() {
     player.hud.container.removeChild(this.uiEle);
     this.locked = false;
-    this.ele.components.canbeunlocked.data.locked = false;
+    // this.ele.components.canbeunlocked.data.locked = false;
     this.createDOMView();
   }
 
@@ -43,11 +44,12 @@ export default class ChestUI {
         this.innerEle.appendChild(this.invItems[i].domElement);
         if (this.contents[i]) {
           // TODO: Add that item to the inventory
+
         }
       }
+      this.toggleUI();
     }
     this.uiEle.appendChild(this.innerEle);
-    player.hud.container.appendChild(this.uiEle);
   }
 
 }

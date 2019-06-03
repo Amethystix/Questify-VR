@@ -8,18 +8,18 @@ export class InventoryItem {
     this.hasItem = false;
   }
 
-  addItem({ name, description, thumbnail }, componentData) {
+  addItem({ name, description, thumbnail }, components) {
     this.hasItem = true;
     this.name = name;
     this.description = description;
     this.thumbnail = thumbnail;
-    this.componentData = componentData;
+    this.componentData = components;
     this.addThumbnailCSS();
     this.domElement.classList.replace('empty', 'full');
 
     this.domElement.addEventListener('mouseover', (evt) => this.toggleDescriptionDiv(evt));
     this.domElement.addEventListener('mouseout', (evt) => this.toggleDescriptionDiv(evt));
-    this.domElement.addEventListener('click', (evt) => player.selectedObj = this);
+    this.domElement.addEventListener('click', (evt) => this.useItem());
   }
 
   addThumbnailCSS() {
@@ -29,11 +29,11 @@ export class InventoryItem {
     }
   }
 
-  useItem(evt) {
+  useItem() {
     const { selectedObj } = window.player;
     if (selectedObj) {
-      if (selectedObj.components.canbeunlocked && this.componentData.unlocks) {
-        if (selectedObj.id === this.componentData.unlocksEntity) {
+      if (selectedObj.ele.components.canbeunlocked && this.componentData.unlocks) {
+        if (selectedObj.ele.id.value === this.componentData.unlocks.unlocksentity) {
           window.player.unlock();
         }
       }
@@ -97,10 +97,10 @@ export class Inventory {
     this.hide = !this.hide;
   }
 
-  addItem(item) {
+  addItem(item, components) {
     for (let i = 0; i < this.invItems.length; i++) {
       if (!this.invItems[i].hasItem) {
-        this.invItems[i].addItem(item);
+        this.invItems[i].addItem(item, components);
         return true;
       }
     }

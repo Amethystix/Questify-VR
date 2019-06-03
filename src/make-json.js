@@ -70,6 +70,7 @@ const scene = {
           'obj-model': 'mtl: #key-mtl; obj: #key;',
           scale: '.025, .025, .025',
           'dynamic-body': 'mass: 1, shape: box',
+          unlocksentity: '123'
         },
         {
           type: 'a-coin',
@@ -94,7 +95,8 @@ const scene = {
         {
           type: 'a-chest',
           position: '5 .5 -3',
-          islocked: false
+          islocked: true,
+          id: '123'
         },
         {
           type: 'a-entity',
