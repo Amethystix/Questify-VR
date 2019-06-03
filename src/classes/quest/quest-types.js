@@ -1,3 +1,5 @@
+// A class that resembles the enum design pattern to define different quest types.
+
 const QuestTypes = {
   Fetch: 1,
   Kill: 2,
