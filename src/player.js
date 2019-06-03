@@ -7,6 +7,7 @@ export default class Player {
     this.hud = new HUD();
     this.inventory = new Inventory();
     this.selectedObj = null;
+    this.activeQuests = [];
 
     setTimeout(() => this.el = document.getElementById('player'), 0);
 
@@ -57,5 +58,9 @@ export default class Player {
     if (this.selectedObj && this.selectedObj.locked) {
       this.selectedObj.unlock();
     }
+  }
+
+  addToQuests(name) {
+    this.activeQuests.push(name);
   }
 }

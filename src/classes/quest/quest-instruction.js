@@ -13,7 +13,7 @@ export default class QuestInstruction {
   // TODO: Come up with a uniform way of detailing quests
   constructor(type, description, details) {
     // If the type is not a corresponding number of defined types...
-    if (NaN(type) || type < 1 || type > 6) {
+    if (isNaN(type) || type < 1 || type > 6) {
       throw new Error('Invalid instruction type');
     } else {
       this.type = type;

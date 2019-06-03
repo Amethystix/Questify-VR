@@ -110,14 +110,24 @@ export default class HUD {
       }
 
       .dialogue-container {
+        position: absolute;
+        top: 0;
+        box-sizing: border-box;
         z-index: 3000;
-        margin: 30px;
-        padding: 30px;
+        padding: 50px;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .dialogue-wrapper {
         background-color: #BBB;
         border-radius: 10px;
         border: 1px solid black;
-        width: 100vw;
-        height: 100vh;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        padding: 25px;
+        font-size: 36px;
       }
 
       .dialogue-content {
@@ -126,6 +136,14 @@ export default class HUD {
 
       .dialogue-options {
         height: 25%;
+        text-align: center;
+      }
+
+      .dialogue-options > button {
+        font-size: 36px;
+        padding: 10px 30px;
+        border-radius: 10px;
+
       }
     </style>`)
   }

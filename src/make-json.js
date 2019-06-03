@@ -42,6 +42,10 @@ const scene = {
         {
           src: './assets/coin.mtl',
           id: 'coin-mtl'
+        },
+        {
+          src: './assets/person.obj',
+          id: 'person'
         }
       ],
       entities: [
@@ -65,12 +69,21 @@ const scene = {
           'static-body': '',
         },
         {
+
+        },
+        {
           type: 'a-key',
           position: '2 1 -2',
           'obj-model': 'mtl: #key-mtl; obj: #key;',
           scale: '.025, .025, .025',
           'dynamic-body': 'mass: 1, shape: box',
           unlocksentity: '123'
+        },
+        {
+          position: '-7, 3, -2',
+          'obj-model': 'obj: #person',
+          'static-body': '',
+          npc: 'name: Daisy; questid: 2'
         },
         {
           type: 'a-coin',
@@ -96,7 +109,7 @@ const scene = {
           type: 'a-chest',
           position: '5 .5 -3',
           islocked: true,
-          contents: '{"name":"Slice of Pie"/"description":"yummy"}',
+          contents: '{"name":"Apple Pie"*"description":"A delicious piece of freshly baked pie"*"thumbnail": "https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788"},{"name":"Apple Pie"*"description":"A delicious piece of freshly baked pie"*"thumbnail": "https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788"}',
           id: '123'
         },
         {
@@ -106,7 +119,7 @@ const scene = {
           spin: '',
           'obj-model': 'mtl: #pie-mtl; obj: #pie',
           scale: '.25, .25, .25',
-          collectable: 'name: Apple Pie Slice; description: A delicious piece of freshly baked pie; thumbnail: https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788'
+          collectable: 'name: Apple Pie; description: A delicious piece of freshly baked pie; thumbnail: https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788'
         },
         {
           type: 'a-box',

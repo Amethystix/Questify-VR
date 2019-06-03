@@ -4,7 +4,10 @@ export default class ChestUI {
   constructor(ele, data) {
     this.ele = ele;
     this.locked = this.ele.components.canbeunlocked && this.ele.components.canbeunlocked.data.locked;
-    this.contents = data.contents.map((item) => JSON.parse(item.replace(/\//, ',')));
+    console.log(data.contents[0]);
+    console.log(data.contents);
+    console.log(data.contents[0].replace(/\*/, ','));
+    this.contents = data.contents.map((item) => JSON.parse(item.replace(/\*/g, ',')));
     this.createDOMView();
   }
 

@@ -34,6 +34,7 @@ export class InventoryItem {
     if (selectedObj) {
       if (selectedObj.ele.components.canbeunlocked && this.componentData.unlocks) {
         if (selectedObj.ele.id.value === this.componentData.unlocks.unlocksentity) {
+          this.removeItem();
           window.player.unlock();
         }
       }
@@ -98,6 +99,40 @@ export class Inventory {
     this.descriptionDiv.appendChild(name);
     this.descriptionDiv.appendChild(info);
     this.invContainer.appendChild(this.descriptionDiv);
+  }
+
+  getIndexOfElement(name) {
+    for (let i = 0; i < this.invItems.length; i++) {
+      if (this.invItems[i].hasItem) {
+        if (this.invItems[i].name === name) {
+          return i;
+        }
+      }
+    }
+  }
+
+  removeAmount(name, amount = this.invItems.length) {
+    let count = 0;
+    for (let i = 0; i < this.invItems.length && count < amount; i++) {
+      if (this.invItems[i].hasItem) {
+        if (this.invItems[i].name === name) {
+          this.invItems[i].removeItem();
+          count++;
+        }
+      }
+    }
+  }
+
+  getQuantityOf(name) {
+    let count = 0;
+    for (let i = 0; i < this.invItems.length; i++) {
+      if (this.invItems[i].hasItem) {
+        if (this.invItems[i].name === name) {
+          count++;
+        }
+      }
+    }
+    return count;
   }
 
   isFull() {

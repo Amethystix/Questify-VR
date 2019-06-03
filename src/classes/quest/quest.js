@@ -8,9 +8,24 @@ export default class Quest {
   }
 
   finishStep() {
-    this.instructions.shift();
+    this.lastFinished = this.instructions.shift();
+
     if (this.instructions.length === 0) {
       this.complete();
+    } else {
+      this.instructions[0].begin();
+    }
+  }
+
+  play() {
+    if (window.player.activeQuests.includes(this.title)) {
+      this.instructions[0].checkForCompleted();
+      if (this.instructions[0].completed) {
+        this.instructions[0].finishStep();
+      }
+    } else {
+      window.player.addToQuests(this.title);
+      this.instructions[0].begin();
     }
   }
 
