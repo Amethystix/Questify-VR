@@ -20,7 +20,8 @@ const registerChest = () => {
       'obj-model': {
         mtl: '#chest-mtl',
         obj: '#chest'
-      }
+      },
+      'static-body': { shape: 'box' },
     },
     mappings: {
       islocked: 'canbeunlocked.locked'

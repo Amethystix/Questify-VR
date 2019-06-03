@@ -32,7 +32,7 @@ export class InventoryItem {
   useItem(evt) {
     const { selectedObj } = window.player;
     if (selectedObj) {
-      if (selectedObj.components.canBeUnlocked && this.componentData.unlocks) {
+      if (selectedObj.components.canbeunlocked && this.componentData.unlocks) {
         if (selectedObj.id === this.componentData.unlocksEntity) {
           window.player.unlock();
         }
@@ -53,7 +53,6 @@ export class InventoryItem {
 
   // TODO: Flesh out, destroy event listeners, remove description and title fields, etc
   removeItem() {
-    console.log('remove');
     this.domElement.classList.replace('full', 'empty');
     this.domElement.style.backgroundImage('none');
   }

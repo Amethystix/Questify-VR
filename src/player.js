@@ -50,6 +50,6 @@ export default class Player {
 
   // Unlocks the selected object
   unlock() {
-    this.selectedObj.components.canBeUnlocked.locked = false;
+    this.selectedObj.componentsbcanbeunlocked.locked = false;
   }
 }

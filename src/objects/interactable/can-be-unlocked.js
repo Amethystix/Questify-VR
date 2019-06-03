@@ -4,7 +4,6 @@ const registerCanBeUnlocked = () => {
       locked: { type: 'boolean', default: false },
     },
     init: function () {
-
     }
   });
 };

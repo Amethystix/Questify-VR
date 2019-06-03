@@ -88,6 +88,26 @@ export default class HUD {
         padding-left: 5px;
         display: inline-block;
       }
+
+      .chest-wrapper {
+        position: absolute;
+        top: 200px;
+        width: 100vw;
+      }
+      .chest-wrapper > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1000px;
+        min-width: 500px;
+        width: 75%;
+        padding: 20px;
+        background-color: #BBBBBB;
+        border-radius: 10px;
+        margin: auto;
+        text-align: center;
+        border: 1px solid black;
+      }
     </style>`)
   }
 }

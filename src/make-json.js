@@ -94,7 +94,6 @@ const scene = {
         {
           type: 'a-chest',
           position: '5 .5 -3',
-          'static-body': 'shape: box',
           islocked: false
         },
         {

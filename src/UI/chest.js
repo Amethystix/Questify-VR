@@ -3,11 +3,9 @@ import { InventoryItem } from "./inventory";
 export default class ChestUI {
   constructor(ele) {
     this.ele = ele;
-    this.locked = this.ele.components.canBeUnlocked && this.ele.components.canBeUnlocked.data.locked;
+    this.locked = this.ele.components.canbeunlocked && this.ele.components.canbeunlocked.data.locked;
     this.contents = [];
-    this.writeCSS();
     this.createDOMView();
-    console.log(this);
   }
 
   onClick() {
@@ -26,7 +24,7 @@ export default class ChestUI {
   unlock() {
     player.hud.container.removeChild(this.uiEle);
     this.locked = false;
-    this.ele.components.canBeUnlocked.data.locked = false;
+    this.ele.components.canbeunlocked.data.locked = false;
     this.createDOMView();
   }
 
@@ -52,25 +50,4 @@ export default class ChestUI {
     player.hud.container.appendChild(this.uiEle);
   }
 
-  writeCSS() {
-    document.write(`<style>
-      .chest-wrapper {
-        position: absolute;
-        top: 200px;
-        width: 100vw;
-      }
-      .chest-wrapper > div {
-        display: flex;
-        max-width: 1000px;
-        min-width: 500px;
-        width: 75%;
-        padding: 20px;
-        background-color: #BBBBBB;
-        border-radius: 10px;
-        margin: auto;
-        text-align: center;
-        border: 1px solid black;
-      }
-    </style>`);
-  }
 }
