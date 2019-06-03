@@ -54,7 +54,7 @@ export default class Player {
 
   // Unlocks the selected object
   unlock() {
-    if (this.selectedObj) {
+    if (this.selectedObj && this.selectedObj.locked) {
       this.selectedObj.unlock();
     }
   }

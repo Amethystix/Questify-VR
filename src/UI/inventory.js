@@ -41,20 +41,28 @@ export class InventoryItem {
   }
 
   toggleDescriptionDiv(evt) {
-    const descEle = document.querySelector('.item-description');
-    if (evt.type === 'mouseover') {
-      descEle.querySelector('.item-title').textContent = this.name;
-      descEle.querySelector('.item-info').textContent = this.description;
-      descEle.classList.replace('hidden', 'show');
-    } else {
-      descEle.classList.replace('show', 'hidden');
+    if (this.hasItem) {
+      const descEle = document.querySelector('.item-description');
+      if (evt.type === 'mouseover') {
+        descEle.querySelector('.item-title').textContent = this.name;
+        descEle.querySelector('.item-info').textContent = this.description;
+        descEle.classList.replace('hidden', 'show');
+      } else {
+        descEle.classList.replace('show', 'hidden');
+      }
     }
   }
 
   // TODO: Flesh out, destroy event listeners, remove description and title fields, etc
   removeItem() {
+    this.hasItem = false;
     this.domElement.classList.replace('full', 'empty');
-    this.domElement.style.backgroundImage('none');
+    this.domElement.style.backgroundImage = 'none';
+    document.querySelector('.item-description').classList.replace('show', 'hidden');
+
+    this.domElement.removeEventListener('mouseover', (evt) => this.toggleDescriptionDiv(evt));
+    this.domElement.removeEventListener('mouseout', (evt) => this.toggleDescriptionDiv(evt));
+    this.domElement.removeEventListener('click', (evt) => this.useItem());
   }
 }
 
@@ -90,6 +98,10 @@ export class Inventory {
     this.descriptionDiv.appendChild(name);
     this.descriptionDiv.appendChild(info);
     this.invContainer.appendChild(this.descriptionDiv);
+  }
+
+  isFull() {
+    return this.invItems.reduce((noEmpty, current) => (current.hasItem && noEmpty), true);
   }
 
   toggleHidden() {

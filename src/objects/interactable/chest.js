@@ -3,10 +3,10 @@ import ChestUI from "../../UI/chest";
 const registerChest = () => {
   AFRAME.registerComponent('chest', {
     schema: {
-      
+      contents: { type: 'array', default: [] }
     },
     init: function() {
-      this.chest = new ChestUI(this.el);
+      this.chest = new ChestUI(this.el, this.data);
       this.el.addEventListener('click', (evt) => {
         this.chest.onClick(evt);
       });
@@ -24,7 +24,8 @@ const registerChest = () => {
       'static-body': { shape: 'box' },
     },
     mappings: {
-      islocked: 'canbeunlocked.locked'
+      islocked: 'canbeunlocked.locked',
+      contents: 'chest.contents',
     }
   });
 };

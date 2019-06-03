@@ -8,11 +8,12 @@ const registerCollectable = () =>  {
     },
 
     init: function() {
+      const components = { ...this.el.components };
       this.el.addEventListener('collide', (event) => {
         setTimeout(() => {
           if (event.detail.body.el.getAttribute('id') === 'rig') {
-            window.player.addToInventory(this.data, this.el.components);
-            // setTimeout(() => this.el.parentNode.removeChild(this.el));
+            window.player.addToInventory(this.data, components);
+            this.el.parentNode.removeChild(this.el);
           }
         }, 0);
       });

@@ -96,6 +96,7 @@ const scene = {
           type: 'a-chest',
           position: '5 .5 -3',
           islocked: true,
+          contents: '{"name":"Slice of Pie"/"description":"yummy"}',
           id: '123'
         },
         {
