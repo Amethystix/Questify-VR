@@ -108,6 +108,25 @@ export default class HUD {
         text-align: center;
         border: 1px solid black;
       }
+
+      .dialogue-container {
+        z-index: 3000;
+        margin: 30px;
+        padding: 30px;
+        background-color: #BBB;
+        border-radius: 10px;
+        border: 1px solid black;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .dialogue-content {
+        height: 75%;
+      }
+
+      .dialogue-options {
+        height: 25%;
+      }
     </style>`)
   }
 }
