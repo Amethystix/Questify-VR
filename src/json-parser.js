@@ -25,17 +25,17 @@ function parseAssets(assetData) {
 
 function parseEntities(entityData) {
   let entity;
-  if (!entityData.type) {
+  if (!entityData.primitiveType) {
     entity = document.createElement('a-entity');
   } else {
-    entity = document.createElement(entityData.type);
+    entity = document.createElement(entityData.primitiveType);
   }
   Object.keys(entityData).forEach((field) => {
     if (field === 'attributes') {
       entityData.attributes.forEach((attribute) => {
         entity.setAttributeNode(document.createAttribute(attribute));
       });
-    } else if (field !== 'type') {
+    } else if (field !== 'primitiveType') {
       entity.setAttribute(field, entityData[field]);
     }
   });

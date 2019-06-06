@@ -16,12 +16,20 @@ const scene = {
           id: 'pie'
         },
         {
+          src: './assets/carpet.png',
+          id: 'carpet'
+        },
+        {
           src: './assets/applePie.mtl',
           id: 'pie-mtl'
         },
         {
           src: './assets/key.obj',
           id: 'key'
+        },
+        {
+          src: './assets/wall.jpg',
+          id: 'wall'
         },
         {
           src: './assets/key.mtl',
@@ -46,7 +54,31 @@ const scene = {
         {
           src: './assets/person.obj',
           id: 'person'
-        }
+        },
+        {
+          src: './assets/models/plant/CoffeePlant.obj',
+          id: 'plant'
+        },
+        {
+          src: './assets/models/plant/CoffeePlant.mtl',
+          id: 'plant-mtl'
+        },
+        {
+          src: './assets/models/light/model.obj',
+          id: 'light'
+        },
+        {
+          src: './assets/models/light/materials.mtl',
+          id: 'light-mtl'
+        },
+        {
+          src: './assets/models/desk/Desk.obj',
+          id: 'desk'
+        },
+        {
+          src: './assets/models/desk/Desk.mtl',
+          id: 'desk-mtl'
+        },
       ],
       entities: [
         // {
@@ -60,19 +92,224 @@ const scene = {
         //   physics: 'static-body',
         // },
         {
-          type: 'a-plane',
+          primitiveType: 'a-plane',
           position: '0 0 -4',
           width: 100,
           height: 100,
-          material: 'color: #AA1188',
+          src: '#carpet',
+          repeat: '15 15',
           rotation: '-90 0 0',
           'static-body': '',
         },
         {
-
+          primitiveType: 'a-box',
+          position: '25 0 0',
+          src: '#wall',
+          repeat: '5 5',
+          'static-body': '',
+          height: '25',
+          depth: '50'
         },
         {
-          type: 'a-key',
+          primitiveType: 'a-box',
+          position: '-25 0 0',
+          src: '#wall',
+          repeat: '5 5',
+          'static-body': '',
+          height: '25',
+          depth: '50'
+        },
+        {
+          primitiveType: 'a-box',
+          position: '0 0 25',
+          src: '#wall',
+          repeat: '5 5',
+          'static-body': '',
+          height: '25',
+          width: '50'
+        },
+        {
+          primitiveType: 'a-box',
+          position: '0 10 0',
+          src: '#wall',
+          repeat: '5 5',
+          'static-body': '',
+          width: '50',
+          depth: '50'
+        },
+        {
+          position: '22 0 22',
+          scale: '.8, .8, .8',
+          'obj-model': 'mtl: #plant-mtl; obj: #plant',
+          'static-body': '',
+        },
+        {
+          position: '-22 0 22',
+          scale: '.8, .8, .8',
+          'obj-model': 'mtl: #plant-mtl; obj: #plant',
+          'static-body': '',
+        },
+        {
+          position: '21 9 0',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-11 9 0',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-21 9 0',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '11 9 0',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '21 9 11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '21 9 -11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '11 9 -21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-11 9 11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-21 9 11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '11 9 11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '21 9 0',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-11 9 0',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-21 9 21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '21 9 21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '11 9 21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-11 9 21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-11 9 -11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-21 9 -11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '11 9 -11',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '21 9 -21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-11 9 -21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '-21 9 -21',
+          scale: '5, 5, 5',
+          'obj-model': 'mtl: #light-mtl; obj: #light',
+          'static-body': '',
+        },
+        {
+          position: '20, 0, 20',
+          'obj-model': 'mtl: #desk; obj: #desk-mtl',
+          'static-body': '',
+          scale: '5, 5, 5'
+        },
+        {
+          position: '22 0 -22',
+          scale: '.8, .8, .8',
+          'obj-model': 'mtl: #plant-mtl; obj: #plant',
+          'static-body': '',
+        },
+        {
+          position: '-22 0 -22',
+          scale: '.8, .8, .8',
+          'obj-model': 'mtl: #plant-mtl; obj: #plant',
+          'static-body': '',
+        },
+        {
+          primitiveType: 'a-box',
+          position: '0 0 -25',
+          src: '#wall',
+          repeat: '5 5',
+          'static-body': '',
+          height: '25',
+          width: '50'
+        },
+        {
+          primitiveType: 'a-key',
           position: '2 1 -2',
           'obj-model': 'mtl: #key-mtl; obj: #key;',
           scale: '.025, .025, .025',
@@ -86,34 +323,34 @@ const scene = {
           npc: 'name: Daisy; questid: 2'
         },
         {
-          type: 'a-coin',
+          primitiveType: 'a-coin',
           position: '3, 1.6, -2',
           scale: '30, 30, 30'
         },
         {
-          type: 'a-coin',
+          primitiveType: 'a-coin',
           position: '5, 1.6, -2',
           scale: '30, 30, 30'
         },
         {
-          type: 'a-coin',
+          primitiveType: 'a-coin',
           position: '7, 1.6, -2',
           scale: '30, 30, 30'
         },
         {
-          type: 'a-coin',
+          primitiveType: 'a-coin',
           position: '9, 1.6, -2',
           scale: '30, 30, 30'
         },
         {
-          type: 'a-chest',
+          primitiveType: 'a-chest',
           position: '5 .5 -3',
           islocked: true,
           contents: '{"name":"Apple Pie"*"description":"A delicious piece of freshly baked pie"*"thumbnail": "https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788"},{"name":"Apple Pie"*"description":"A delicious piece of freshly baked pie"*"thumbnail": "https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788"}',
           id: '123'
         },
         {
-          type: 'a-entity',
+          primitiveType: 'a-entity',
           position: '-2 1 3',
           'dynamic-body': 'shape: box; mass: 0',
           spin: '',
@@ -122,7 +359,7 @@ const scene = {
           collectable: 'name: Apple Pie; description: A delicious piece of freshly baked pie; thumbnail: https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788'
         },
         {
-          type: 'a-box',
+          primitiveType: 'a-box',
           position: {
             x: 0,
             y: 5,
@@ -136,7 +373,7 @@ const scene = {
           collectable: 'name: boxy; description: a box; thumbnail: ./assets/boxy.png',
         },
         {
-          type: 'a-box',
+          primitiveType: 'a-box',
           position: {
             x: 0,
             y: 0.4,
@@ -150,7 +387,7 @@ const scene = {
           collectable: 'name: another box; description: some other box',
         },
         {
-          type: 'a-box',
+          primitiveType: 'a-box',
           position: {
             x: 0,
             y: 0.4,
