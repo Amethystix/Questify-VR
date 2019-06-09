@@ -10,7 +10,7 @@ const registerKey = () => {
       thumbnail: 'collectable.thumbnail',
       unlocksentity: 'unlocks.unlocksentity',
       name: 'collectable.name',
-      description: 'collectable.description'
+      description: 'collectable.description',
     },
   });
 };

@@ -52,8 +52,12 @@ const scene = {
           id: 'coin-mtl'
         },
         {
-          src: './assets/person.obj',
+          src: './assets/models/person/model.obj',
           id: 'person'
+        },
+        {
+          src: './assets/models/person/materials.mtl',
+          id: 'person-mtl',
         },
         {
           src: './assets/models/plant/CoffeePlant.obj',
@@ -72,25 +76,63 @@ const scene = {
           id: 'light-mtl'
         },
         {
-          src: './assets/models/desk/Desk.obj',
-          id: 'desk'
+          src: './assets/models/copier/model.obj',
+          id: 'copier',
         },
         {
-          src: './assets/models/desk/Desk.mtl',
-          id: 'desk-mtl'
+          src: './assets/models/copier/materials.mtl',
+          id: 'copier-mtl'
         },
+        {
+          src: './assets/models/sofa/Sofa_01.obj',
+          id: 'sofa'
+        },
+        {
+          src: './assets/models/sofa/Sofa_01.mtl',
+          id: 'sofa-mtl'
+        },
+        {
+          src: './assets/models/cubicle/model.obj',
+          id: 'cubicle'
+        },
+        {
+          src: './assets/models/cubicle/materials.mtl',
+          id: 'cubicle-mtl'
+        },
+        {
+          src: './assets/models/chair/materials.mtl',
+          id: 'chair-mtl'
+        },
+        {
+          src: './assets/models/chair/model.obj',
+          id: 'chair'
+        },
+        {
+          src: './assets/models/pencil/pencil.obj',
+          id: 'pencil'
+        },
+        {
+          src: './assets/models/pencil/pencil.mtl',
+          id: 'pencil-mtl'
+        },
+        {
+          src: './assets/models/computer/Computer.obj',
+          id: 'computer'
+        },
+        {
+          src: './assets/models/computer/Computer.mtl',
+          id: 'computer-mtl'
+        },
+        {
+          src: './assets/models/flashdrive/model.obj',
+          id: 'flashdrive'
+        },
+        {
+          src: './assets/models/flashdrive/materials.mtl',
+          id: 'flashdrive-mtl'
+        }
       ],
       entities: [
-        // {
-        //   position: {
-        //     x: 0,
-        //     y: 0,
-        //     z: 0,
-        //   },
-        //   geometry: 'primitive: sphere',
-        //   material: 'color: #4444FF',
-        //   physics: 'static-body',
-        // },
         {
           primitiveType: 'a-plane',
           position: '0 0 -4',
@@ -100,6 +142,15 @@ const scene = {
           repeat: '15 15',
           rotation: '-90 0 0',
           'static-body': '',
+        },
+        {
+          primitiveType: 'a-chest',
+          position: '-15 2.2 -10.5',
+          'obj-model': 'obj: #computer; mtl: #computer-mtl',
+          islocked: true,
+          contents: '{"name":"Document"*"description":"A document of supposedly high importance"*"thumbnail": "./assets/document.png"}',
+          id: '321',
+          scale: '.007, .007, .007'
         },
         {
           primitiveType: 'a-box',
@@ -282,10 +333,89 @@ const scene = {
           'static-body': '',
         },
         {
-          position: '20, 0, 20',
-          'obj-model': 'mtl: #desk; obj: #desk-mtl',
+          position: '5 1.5 22',
+          'obj-model': 'mtl: #copier-mtl; obj: #copier',
           'static-body': '',
-          scale: '5, 5, 5'
+          scale: '1.5, 1.5, 1.5'
+        },
+        {
+          position: '10 1.5 -22',
+          'obj-model': 'mtl: #copier-mtl; obj: #copier',
+          'static-body': '',
+          rotation: '0 180 0',
+          scale: '1.5, 1.5, 1.5'
+        },
+        {
+          position: '15, 2, 10',
+          'obj-model': 'mtl: #cubicle-mtl; obj: #cubicle',
+          'static-body': '',
+          scale: '2.5, 2.5, 2.5'
+        },
+        {
+          position: '13.5, .8, 9',
+          'obj-model': 'mtl: #chair-mtl; obj: #chair',
+          scale: '2.3, 2.3, 2.3'
+        },
+        {
+          position: '0, 2, 10',
+          'obj-model': 'mtl: #cubicle-mtl; obj: #cubicle',
+          'static-body': '',
+          scale: '2.5, 2.5, 2.5'
+        },
+        {
+          position: '-1.5, .8, 9',
+          'obj-model': 'mtl: #chair-mtl; obj: #chair',
+          scale: '2.3, 2.3, 2.3'
+        },
+        {
+          position: '-15, 2, 10',
+          'obj-model': 'mtl: #cubicle-mtl; obj: #cubicle',
+          'static-body': '',
+          scale: '2.5, 2.5, 2.5'
+        },
+        {
+          position: '-16.5, .8, 9',
+          'obj-model': 'mtl: #chair-mtl; obj: #chair',
+          scale: '2.3, 2.3, 2.3'
+        },
+        {
+          position: '15, 2, -10',
+          'obj-model': 'mtl: #cubicle-mtl; obj: #cubicle',
+          'static-body': '',
+          scale: '2.5, 2.5, 2.5',
+          rotation: '0 180 0',
+        },
+        {
+          position: '16.5, .8, -9',
+          'obj-model': 'mtl: #chair-mtl; obj: #chair',
+          scale: '2.3, 2.3, 2.3',
+          rotation: '0 180 0'
+        },
+        {
+          position: '0, 2, -10',
+          'obj-model': 'mtl: #cubicle-mtl; obj: #cubicle',
+          'static-body': '',
+          scale: '2.5, 2.5, 2.5',
+          rotation: '0 180 0',
+        },
+        {
+          position: '1.5, .8, -9',
+          'obj-model': 'mtl: #chair-mtl; obj: #chair',
+          scale: '2.3, 2.3, 2.3',
+          rotation: '0 180 0'
+        },
+        {
+          position: '-15, 2, -10',
+          'obj-model': 'mtl: #cubicle-mtl; obj: #cubicle',
+          'static-body': '',
+          rotation: '0 180 0',
+          scale: '2.5, 2.5, 2.5'
+        },
+        {
+          position: '-13.5, .8, -9',
+          'obj-model': 'mtl: #chair-mtl; obj: #chair',
+          scale: '2.3, 2.3, 2.3',
+          rotation: '0 180 0'
         },
         {
           position: '22 0 -22',
@@ -308,98 +438,32 @@ const scene = {
           height: '25',
           width: '50'
         },
+
         {
           primitiveType: 'a-key',
-          position: '2 1 -2',
-          'obj-model': 'mtl: #key-mtl; obj: #key;',
-          scale: '.025, .025, .025',
-          'dynamic-body': 'mass: 1, shape: box',
-          unlocksentity: '123'
+          position: '10 1 21',
+          'obj-model': 'mtl: #flashdrive-mtl; obj: #flashdrive;',
+          scale: '.5, .5, .5',
+          'dynamic-body': 'mass: 0, shape: box',
+          unlocksentity: '321',
+          spin: '',
         },
         {
-          position: '-7, 3, -2',
-          'obj-model': 'obj: #person',
+          position: '-7, 2.1, 2',
+          'obj-model': 'obj: #person; mtl: #person-mtl',
           'static-body': '',
-          npc: 'name: Daisy; questid: 2'
-        },
-        {
-          primitiveType: 'a-coin',
-          position: '3, 1.6, -2',
-          scale: '30, 30, 30'
-        },
-        {
-          primitiveType: 'a-coin',
-          position: '5, 1.6, -2',
-          scale: '30, 30, 30'
-        },
-        {
-          primitiveType: 'a-coin',
-          position: '7, 1.6, -2',
-          scale: '30, 30, 30'
-        },
-        {
-          primitiveType: 'a-coin',
-          position: '9, 1.6, -2',
-          scale: '30, 30, 30'
-        },
-        {
-          primitiveType: 'a-chest',
-          position: '5 .5 -3',
-          islocked: true,
-          contents: '{"name":"Apple Pie"*"description":"A delicious piece of freshly baked pie"*"thumbnail": "https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788"},{"name":"Apple Pie"*"description":"A delicious piece of freshly baked pie"*"thumbnail": "https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788"}',
-          id: '123'
+          npc: 'name: Rob; questid: 2',
+          scale: '1.25, 1.25, 1.25'
         },
         {
           primitiveType: 'a-entity',
-          position: '-2 1 3',
+          position: '10 1 4',
           'dynamic-body': 'shape: box; mass: 0',
           spin: '',
-          'obj-model': 'mtl: #pie-mtl; obj: #pie',
-          scale: '.25, .25, .25',
-          collectable: 'name: Apple Pie; description: A delicious piece of freshly baked pie; thumbnail: https://firebasestorage.googleapis.com/v0/b/questify-d4c5a.appspot.com/o/pie.png?alt=media&token=4afa56e5-ade9-4d0f-bdd3-201469b02788'
+          'obj-model': 'mtl: #pencil-mtl; obj: #pencil',
+          collectable: 'name: Pencil; description: An ordinary office pencil that someone must have dropped.; thumbnail: ./assets/pencil.png',
+          scale: '.15, .15, .15'
         },
-        {
-          primitiveType: 'a-box',
-          position: {
-            x: 0,
-            y: 5,
-            z: -2,
-          },
-          height: 1,
-          width: 1,
-          // 'obj-model': 'mtl: #key-mtl; obj: #key;',
-          'dynamic-body': 'mass: 2; shape: box;',
-          // scale: '.0025, .0025, .0025',
-          collectable: 'name: boxy; description: a box; thumbnail: ./assets/boxy.png',
-        },
-        {
-          primitiveType: 'a-box',
-          position: {
-            x: 0,
-            y: 0.4,
-            z: -5,
-          },
-          height: 1,
-          width: 1,
-          // 'obj-model': 'mtl: #key-mtl; obj: #key;',
-          'dynamic-body': 'mass: 2; shape: box;',
-          // scale: '.0025, .0025, .0025',
-          collectable: 'name: another box; description: some other box',
-        },
-        {
-          primitiveType: 'a-box',
-          position: {
-            x: 0,
-            y: 0.4,
-            z: -8,
-          },
-          height: 1,
-          width: 1,
-          // 'obj-model': 'mtl: #key-mtl; obj: #key;',
-          'dynamic-body': 'mass: 2; shape: box;',
-          // scale: '.0025, .0025, .0025',
-          collectable: 'name: box 3; description: a third box',
-        }
       ],
     },
   ],

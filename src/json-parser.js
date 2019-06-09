@@ -71,7 +71,7 @@ function loadScene(sceneData) {
 
     player.setAttribute('id', 'player');
     player.setAttributeNode(document.createAttribute('camera'));
-    player.setAttribute('position', '0 1.6 0');
+    player.setAttribute('position', '0 2.5 0');
     player.setAttribute('look-controls', 'pointerLockEnabled: false');
     scene.appendChild(playerWrapper);
   }

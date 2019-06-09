@@ -4,9 +4,6 @@ export default class ChestUI {
   constructor(ele, data) {
     this.ele = ele;
     this.locked = this.ele.components.canbeunlocked && this.ele.components.canbeunlocked.data.locked;
-    console.log(data.contents[0]);
-    console.log(data.contents);
-    console.log(data.contents[0].replace(/\*/, ','));
     this.contents = data.contents.map((item) => JSON.parse(item.replace(/\*/g, ',')));
     this.createDOMView();
   }
@@ -26,7 +23,7 @@ export default class ChestUI {
   }
 
   unlock() {
-    player.hud.container.removeChild(this.uiEle);
+    window.player.hud.container.removeChild(this.uiEle);
     this.locked = false;
     // this.ele.components.canbeunlocked.data.locked = false;
     this.createDOMView();
