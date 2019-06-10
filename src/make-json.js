@@ -148,7 +148,7 @@ const scene = {
           position: '-15 2.2 -10.5',
           'obj-model': 'obj: #computer; mtl: #computer-mtl',
           islocked: true,
-          contents: '{"name":"Document"*"description":"A document of supposedly high importance"*"thumbnail": "./assets/document.png"}',
+          contents: '{"name":"Unfinished Story"*"description":"The unfinished story that Bob was looking for!  Better get it back to him."*"thumbnail": "./assets/document.png"}',
           id: '321',
           scale: '.007, .007, .007'
         },
@@ -440,13 +440,14 @@ const scene = {
         },
 
         {
-          primitiveType: 'a-key',
           position: '10 1 21',
           'obj-model': 'mtl: #flashdrive-mtl; obj: #flashdrive;',
           scale: '.5, .5, .5',
           'dynamic-body': 'mass: 0, shape: box',
-          unlocksentity: '321',
+          unlocks: 'unlocksentity: 321',
           spin: '',
+          collectable: 'name: Flash Drive; description: A flash drive that was laying around the office; thumbnail: ./assets/usb.png',
+
         },
         {
           position: '-7, 2.1, 2',

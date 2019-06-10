@@ -81,41 +81,50 @@ const registerNPC = () => {
           const firstDialogue = new Dialogue([
             {
               text: `
-                <p>Welcome to the demo!  Thanks for being here, we're happy to welcome you into our
-                world!  My name is Daisy, and I need you to just do one little favor for me...</p>`
+                <p>Hey there! You must be the new kid in the office- welcome! My name's Bob, and I've got a job for you.</p>`
             },
             {
               text:
-                `<p>This might sound silly, but I really could use some pie right now- I'm starved.  Unfortunately,
-                I don't really have use of these legs!  There seems to be more than enough pie around here, and it kills me that
-                I've just been staring at it all day.</p>`
+                `<p>I was in the middle of writing this story, but had to get my laptop repaired, so I saved my story on a flash drive. Now that I've you my computer back, I can't find the flash drive!</p>`
             },
             {
               text:
-                `<p>So if you could be my hero and fetch me 2 pieces of apple pie, I would be forever
-                indebted to you!  You can for sure find some laying around, but I'm sure there's some more hidden away somewhere...</p>`
+                `<p>I need you to find my flash drive and get my story back to me so that I can finish it.  You can use a computer that's laying around the office to get the story off of once you find the flash drive- I think I dropped it somewhere in the office.</p>`
             }
           ]);
           firstDialogue.showDialogue();
           this.number++;
         } else if (this.number === 1) {
-          if (window.player.inventory.getQuantityOf('Apple Pie') >= 2) {
+          if (window.player.inventory.getQuantityOf('Unfinished Story') >= 1) {
             const secondDialogue = new Dialogue([
               {
-                text: `<p>My hero!  Thank you so much, I really needed this pie!  I have no
-                  idea where you found the second piece, but...at this rate I don't even really care.
-                   Please take this as a token of my gratitude.</p>`
+                text: `<p>Ah, this is it!  Great job newbie- I think you're gonna fit in great around here. Here's your pay for this job.</p>`
+              },
+              {
+                text: `<p>Just one last thing...a little question to make sure you know what you're getting into as a writer.</p>
+                  <p>Fill in the blank- The ____ is mightier than the sword.</p>`,
+                mc: {
+                  responses: [
+                    'Knife', 'Pen', 'Brain', 'Shield'
+                  ],
+                  correct: 'Pen',
+                  wrongText: '<p>Not quite....try again.  The _____ is mightier than the sword.</p>'
+                }
+              },
+              {
+                text: `<p>Great! You're off to a great start- as my parting words to you, check out this TED talk about getting enough sleep- it's so important for your health..</p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5MuIMqhT8DM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
               }
             ]);
             secondDialogue.showDialogue();
-            window.player.inventory.removeAmount('Apple Pie', 2);
+            window.player.inventory.removeAmount('Unfinished Story', 1);
             window.player.addMoney(50);
             this.number++;
           } else {
             const notDoneDialogue = new Dialogue(
               [{
                 text:
-                  `<p>I don't see enough pieces of pie...get to work!</p>`
+                  `<p>It doesn't look like you've found the file yet- please do your best!  I put a lot of hours into that article.</p>`
               }]
             );
             notDoneDialogue.showDialogue();
@@ -123,7 +132,7 @@ const registerNPC = () => {
         } else if (this.number === 2) {
           const doneDialogue = new Dialogue([
             {
-              text: `<p>So much pie! Thanks again!</p>`
+              text: `<p>I can't wait to see what you do next!</p>`
             }
           ]);
           doneDialogue.showDialogue();

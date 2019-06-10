@@ -11,6 +11,30 @@ export default class Dialogue {
       document.body.appendChild(this.ele);
     }
     this.dialogueContent.innerHTML = this.data[this.index].text;
+    if (this.data[this.index].mc) {
+      this.dialogueOptions.removeChild(document.getElementById('next-button'));
+      const mcButtons = document.createElement('div');
+      mcButtons.classList.add('option-buttons');
+
+      this.data[this.index].mc.responses.forEach((res) => {
+        const btn = document.createElement('button');
+        btn.textContent = res;
+        if (res === this.data[this.index].mc.correct) {
+          btn.addEventListener('click', () => this.onClick());
+        } else {
+          btn.addEventListener('click', () => { this.dialogueContent.innerHTML = this.data[this.index].mc.wrongText; });
+        }
+        this.dialogueOptions.appendChild(btn);
+      });
+    } else if (this.dialogueOptions.querySelectorAll('button').length > 1) {
+      this.dialogueOptions.querySelectorAll('button').forEach(button => this.dialogueOptions.removeChild(button));
+
+      const btn = document.createElement('button');
+      btn.setAttribute('id', 'next-button');
+      btn.textContent = 'Next';
+      btn.addEventListener('click', () => this.onClick());
+      this.dialogueOptions.appendChild(btn);
+    }
   }
 
   onClick() {
@@ -38,8 +62,9 @@ export default class Dialogue {
 
     this.dialogueOptions = document.createElement('div');
     this.dialogueOptions.classList.add('dialogue-options');
-
+  
     const btn = document.createElement('button');
+    btn.setAttribute('id', 'next-button');
     btn.textContent = 'Next';
     btn.addEventListener('click', () => this.onClick());
     this.dialogueOptions.appendChild(btn);
